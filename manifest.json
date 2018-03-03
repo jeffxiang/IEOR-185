@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "TestExtension",
+  "description": "Basic Prototype of Data Privacy Extension",
+  "version": "1.0",
+
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "activeTab"
+  ]
+}
