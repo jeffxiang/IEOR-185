@@ -1,21 +1,15 @@
 {
   "manifest_version": 2,
-  "name": "TestExtension",
-  "description": "Basic Prototype of Data Privacy Extension",
+
+  "name": "Spydy",
+  "description": "This extension will allow parents protect their child from disclosing soft information",
   "version": "1.0",
 
-  "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "content.js"
-      ]
-    }
-  ],
-
+  "browser_action": {
+   "default_icon": "icon.png",
+   "default_popup": "popup.html"
+  },
   "permissions": [
-    "activeTab"
-  ]
+   "activeTab"
+   ]
 }
