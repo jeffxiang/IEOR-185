@@ -1,39 +1,46 @@
 <!doctype html>
 <html>
+<body>
+  <h1>Spidy SignUp</h1>
+<form>
+  First Name:<br>
+  <input type="text" id="First Name"><br>
+  Last Name:<br>
+  <input type="text" id="Last Name"><br>
+  Email:<br>
+  <input type="email" id="Email ID"><br>
+  Mobile:<br>
+  <input type="text" id="Mobile"><br>
+  Permenant Address:<br>
+  <input type="text" id="Address"><br>
+  <button id="submit">Submit</button>
+</form>
+</body>
   <head>
-    <title>Spydi</title>
-    <script src="popup.js">
-      var firstname = document.getElementByID("First Name").value;
-      var lastname = document.getElementByID("Last Name").value;
-      var email = document.getElementByID("Email ID").value;
-      var mobile = document.getElementByID("Mobile").value;
-      var address = document.getElementByID("Address").value;
-      document.getElementByID("submit").addEventListener(
-        "click", writeToFile());
-
-        writeToFile() {
-          localStorage.setItem("firstname", firstname);
-          localStorage.setItem("lastname", lastname);
-          localStorage.setItem("email", email);
-          localStorage.setItem("mobile", mobile);
-          localStorage.setItem("address", address);
-        }
+    <title>Spidy</title>
+    <script>
+    document.getElementById("submit").onclick = function() {
+      var firstname = document.getElementById("First Name").value;
+      var lastname = document.getElementById("Last Name").value;
+      var email = document.getElementById("Email ID").value;
+      var mobile = document.getElementById("Mobile").value;
+      var address = document.getElementById("Address").value;
+      chrome.storage.local.set({"firstname": firstname}, function() {
+        console.log("set firstname to:" + firstname)
+      });
+      chrome.storage.local.set({"lastname": lastname}, function() {
+        console.log("set lastname")
+      });
+      chrome.storage.local.set({"email": email}, function() {
+        console.log("set email")
+      });
+      chrome.storage.local.set({"mobile": mobile}, function() {
+        console.log("set mobile")
+      });
+      chrome.storage.local.set({"address": address}, function() {
+        console.log("set address")
+      });
+    };
     </script>
   </head>
-  <body>
-    <h1>Spidy SignUp</h1>
-  <form>
-    First Name:<br>
-    <input type="text" id="First Name"><br>
-    Last Name:<br>
-    <input type="text" id="Last Name"><br>
-    Email:<br>
-    <input type="email" id="Email ID"><br>
-    Mobile:<br>
-    <input type="text" id="Mobile"><br>
-    Permenant Address:<br>
-    <input type="text" id="Address"><br>
-    <button id="submit">Submit</button>
-  </form>
-  </body>
 </html>

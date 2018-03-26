@@ -5,6 +5,10 @@
   "description": "This extension will allow parents protect their child from disclosing soft information",
   "version": "1.0",
 
+  "background": {
+    "page": "signup.html"
+  },
+
   "content_scripts":[
     {
       "matches": [
@@ -21,8 +25,8 @@
    "default_icon": "spidy updated.png",
    "default_popup": "popup.html"
   },
+
   "permissions": [
-   "activeTab",
-   "downloads"
-   ]
+    "storage"
+  ]
 }

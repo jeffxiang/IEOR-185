@@ -1,16 +1,29 @@
 console.log("Chrome extension go");
+
+var firstname = chrome.storage.local.get('firstname', function(result) {
+  console.log(result.key)
+});
+var lastname = chrome.storage.local.get('lastname', function() {
+  console.log('get lastname')
+});
+var email = chrome.storage.local.get('email', function() {
+  console.log('get email')
+});
+var mobile = chrome.storage.local.get('mobile', function() {
+  console.log('get mobile')
+});
+var address = chrome.storage.local.get('address', function() {
+  console.log('get address')
+});
+console.log(firstname);
+
 function getInputs() {
   var inputs = document.getElementsByTagName('input');
   for (var i = 0; i < inputs.length; i++) {
     inputs.item(i).onkeyup = function() {
       var input = this.value;
-      var firstname = localStorage.getItem("firstname");
-      var lastname = localStorage.getItem("lastname");
-      var email = localStorage.getItem("email");
-      var mobile = localStorage.getItem("mobile");
-      var address = localStorage.getItem("address");
       if (input == firstname || input == lastname ||
-        input == email || input == mobile || input == address || input == "Jeff") {
+        input == email || input == mobile || input == address) {
           alert("Be careful! You're entering private information into your browser!");
         }
     };
