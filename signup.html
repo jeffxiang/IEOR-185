@@ -2,7 +2,7 @@
 <html>
 <body>
   <h1>Spidy SignUp</h1>
-<form>
+<form onsubmit="saveAsFile()">
   First Name:<br>
   <input type="text" id="First Name"><br>
   Last Name:<br>
@@ -13,34 +13,31 @@
   <input type="text" id="Mobile"><br>
   Permenant Address:<br>
   <input type="text" id="Address"><br>
-  <button id="submit">Submit</button>
+  <input type="submit"></input>
 </form>
 </body>
   <head>
     <title>Spidy</title>
     <script>
-    document.getElementById("submit").onclick = function() {
-      var firstname = document.getElementById("First Name").value;
-      var lastname = document.getElementById("Last Name").value;
-      var email = document.getElementById("Email ID").value;
-      var mobile = document.getElementById("Mobile").value;
-      var address = document.getElementById("Address").value;
-      chrome.storage.local.set({"firstname": firstname}, function() {
-        console.log("set firstname to:" + firstname)
-      });
-      chrome.storage.local.set({"lastname": lastname}, function() {
-        console.log("set lastname")
-      });
-      chrome.storage.local.set({"email": email}, function() {
-        console.log("set email")
-      });
-      chrome.storage.local.set({"mobile": mobile}, function() {
-        console.log("set mobile")
-      });
-      chrome.storage.local.set({"address": address}, function() {
-        console.log("set address")
-      });
-    };
+    function saveAsFile() {
+      var firstname = "firstname: " + document.getElementById('First Name').value + "; ";
+      var lastname = "lastname: " + document.getElementById('Last Name').value + "; ";
+      var email = "email: " + document.getElementById('Email ID').value + "; ";
+      var mobile = "mobile: " + document.getElementById('Mobile').value + "; ";
+      var address = "address: " + document.getElementById('Address').value + "; ";
+
+      var texttosave = firstname + lastname + email + mobile + address;
+
+      var textblob = new Blob([texttosave], {type: "text/plain"});
+      var downloadURL = window.URL.createObjectURL(textblob);
+      var filename = "spidy";
+
+      var downloadlink = document.createElement('a');
+      downloadlink.download = filename;
+      downloadlink.href = downloadURL;
+      downloadlink.click();
+      alert("downloaded!");
+  }
     </script>
   </head>
 </html>

@@ -1,7 +1,7 @@
-console.log("Chrome extension go");
+/*console.log("Chrome extension go");
 
-var firstname = chrome.storage.local.get('firstname', function(result) {
-  console.log(result.key)
+var firstname = chrome.storage.local.get('firstname', function() {
+  console.log('get firstname')
 });
 var lastname = chrome.storage.local.get('lastname', function() {
   console.log('get lastname')
@@ -15,7 +15,7 @@ var mobile = chrome.storage.local.get('mobile', function() {
 var address = chrome.storage.local.get('address', function() {
   console.log('get address')
 });
-console.log(firstname);
+console.log();*/
 
 function getInputs() {
   var inputs = document.getElementsByTagName('input');

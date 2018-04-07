@@ -9,6 +9,11 @@
     "page": "signup.html"
   },
 
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+
   "content_scripts":[
     {
       "matches": [
@@ -24,9 +29,5 @@
   "browser_action": {
    "default_icon": "spidy updated.png",
    "default_popup": "popup.html"
-  },
-
-  "permissions": [
-    "storage"
-  ]
+  }
 }
