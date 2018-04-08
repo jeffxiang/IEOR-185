@@ -1,32 +1,34 @@
-/*console.log("Chrome extension go");
+console.log("Chrome extension go");
 
-var firstname = chrome.storage.local.get('firstname', function() {
-  console.log('get firstname')
-});
-var lastname = chrome.storage.local.get('lastname', function() {
-  console.log('get lastname')
-});
-var email = chrome.storage.local.get('email', function() {
-  console.log('get email')
-});
-var mobile = chrome.storage.local.get('mobile', function() {
-  console.log('get mobile')
-});
-var address = chrome.storage.local.get('address', function() {
-  console.log('get address')
-});
-console.log();*/
+var address = /^\d+(\s)*[A-z]+(\s)*[A-z]+/;
+var cardnum = /(\d(\s)*){14, 16}/;
+var phonenum = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})/;
 
 function getInputs() {
   var inputs = document.getElementsByTagName('input');
   for (var i = 0; i < inputs.length; i++) {
     inputs.item(i).onkeyup = function() {
       var input = this.value;
-      if (input == firstname || input == lastname ||
-        input == email || input == mobile || input == address) {
-          alert("Be careful! You're entering private information into your browser!");
-        }
+      var result = checkInputs(input);
+      if (result != "false") {
+        alert("We have detected that you are trying to enter sensitive information. Are you sure you want to enter " + result + " into your browser?");
+      }
     };
+  }
+}
+
+function checkInputs(input) {
+  if (input.match(address)) {
+    return "an address";
+  }
+  if (input.match(cardnum)) {
+    return "a card number";
+  }
+  if (input.match(phonenum)) {
+    return "this";
+  }
+  else {
+    return "false";
   }
 }
 getInputs();

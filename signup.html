@@ -35,6 +35,7 @@
       var downloadlink = document.createElement('a');
       downloadlink.download = filename;
       downloadlink.href = downloadURL;
+      // should probably destroy link
       downloadlink.click();
       alert("downloaded!");
   }
