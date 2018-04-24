@@ -9,11 +9,17 @@ var matchstrings = [address, cardnum, phonenum, ssn]; // Can be expanded.
 
 localStorage.setItem("lastinput", ""); // Enhances UX by making sure same inputs on separate keyup events aren't double-detected.
 
+/* Function that returns a NodeList of all current input fields in the DOM. */
+function getInputs() {
+    var inputs = document.querySelectorAll('input, textarea');
+    return inputs;
+}
 /* Function that runs at the start of DOM loading and whenever a mutation on DOM occurs.
   Checks all input fields on DOM and performs pattern matching to detect whenever sensitive
-  information is being entered. */
-function getInputs() {
-  var inputs = document.getElementsByTagName('input');
+  information is being entered.
+  Takes in a NodeList INPUTS as parameter. */
+function evalInputs(inputs) {
+  console.log(inputs);
   for (var i = 0; i < inputs.length; i++) {
     inputs.item(i).onkeyup = function() {
       var input = this.value;
@@ -50,14 +56,14 @@ function checkInput(input) {
   return false;
 }
 
-getInputs(); // getInputs() executed at the start of DOM loading.
+evalInputs(getInputs()); // evalInputs(inputs) executed at the start of DOM loading.
 
 
 /* Detects mutations in DOM to ensure that all input fields in DOM are accounted for. */
 var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-            getInputs(); // getInputs() is called again if there is a mutation in DOM, accounting for any new input fields.
+            evalInputs(getInputs()); // evalInputs(inputs) is called again if there is a mutation in DOM, accounting for any new input fields.
         }
     });
 });
