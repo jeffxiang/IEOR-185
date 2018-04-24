@@ -27,6 +27,7 @@
   ],
 
   "browser_action": {
-   "default_icon": "spidy updated.png"
+   "default_icon": "spidy updated.png",
+   "default_popup": "popup.html"
   }
 }

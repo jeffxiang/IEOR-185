@@ -3,8 +3,9 @@ console.log("Spidy go!"); // Indicates that Spidy is running.
 var address = /^\d+(\s)*[A-z]+(\s)*[A-z]+/;
 var cardnum = /(\d(\s)*){14, 16}/;
 var phonenum = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})/;
+var ssn = /^\d{3}-\d{2}-\d{4}$/;
 
-var matchstrings = [address, cardnum, phonenum]; // Can be expanded.
+var matchstrings = [address, cardnum, phonenum, ssn]; // Can be expanded.
 
 localStorage.setItem("lastinput", ""); // Enhances UX by making sure same inputs on separate keyup events aren't double-detected.
 
@@ -22,7 +23,11 @@ function getInputs() {
         var result = checkInput(input);
         if (result) {
           alert("We have detected that you are trying to enter sensitive information. Are you sure you want to enter this into your browser?");
+          // alertParents();
+          // This has not been implemented because they require cloud storage services that we have not paid for.
         }
+        // updatePoints(currpoints, # of webpages, # of domains);
+        // Again, this requires cloud storage.
       }
     }
   }
@@ -30,8 +35,10 @@ function getInputs() {
 
 /* Function to update points. */
 function updatePoints(currpoints, webpages, domains) {
-  return currpoints + webpages/4 + domains;
+  return currpoints + webpages/4 + domains; // proportional to # of webpages and domains visited, but with heavier weight on domains.
 }
+
+
 
 /* Function that checks an input with patterns. */
 function checkInput(input) {
@@ -50,7 +57,7 @@ getInputs(); // getInputs() executed at the start of DOM loading.
 var observer = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
         if (mutation.addedNodes && mutation.addedNodes.length > 0) {
-            getInputs();
+            getInputs(); // getInputs() is called again if there is a mutation in DOM, accounting for any new input fields.
         }
     });
 });
