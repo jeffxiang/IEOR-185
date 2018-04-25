@@ -5,10 +5,6 @@
   "description": "This extension will allow parents protect their child from disclosing soft information",
   "version": "1.0",
 
-  "background": {
-    "page": "signup.html"
-  },
-
   "permissions": [
     "tabs",
     "storage"
