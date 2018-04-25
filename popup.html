@@ -1,9 +1,116 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Welcome, Jeff!</title>
-  </head>
-  <body>
-    <h1>Spidy</h1>
-  </body>
-</html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+a:link, a:visited {
+    background-color: #9a1c1f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+
+a:hover, a:active {
+    background-color: #9a1c1f;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+body{
+  min-width:300px;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #9a1c1f;
+    color: white;
+    padding: 14px 10px;
+    margin: 8px 0;
+    border-style: solid;
+    border-width: medium;
+    border-color: white;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+button:hover {
+    opacity:1;
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 5%;
+    border-radius: 10%;
+}.container {
+    padding: 16px;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+    padding: 14px 20px;
+    background-color: #9a1c1f;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}/* Add padding to container elements */
+.container {
+    padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+</style>
+<body>
+  <form action="/action_page.php" style="border:1px solid #ccc">
+      <h1> Welcome to Spidy! </h1>
+
+       <div class="clearfix">
+         <a href="file:///Users/Jeff/Desktop/School/Spring2018/IEOR/ChromeExtension/login.html" target='_newtab' class="button">Sign in</a>
+         <a href="file:///Users/Jeff/Desktop/School/Spring2018/IEOR/ChromeExtension/finalsignup.html" target='_newtab' class="button">Sign up</a>
+       </div>
+     </div>
+   </form>
+
+   </body>
+   </html>
