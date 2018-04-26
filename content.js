@@ -15,6 +15,7 @@ function getInputs() {
     return inputs;
 }
 
+/* Function that takes a string as an input and gets rid of all whitespaces. */
 function ridWhitespace(string) {
   return string.replace(/ /g, "");
 }
@@ -52,9 +53,14 @@ function updatePoints(currpoints, webpages, domains) {
 
 /* Function that checks an input with patterns. */
 function checkInput(input) {
-  for (var i = 0; i < matchstrings.length; i++) {
-    if (input.match(matchstrings[i])) {
-      return true;
+  for (var i = 0; i < input.length; i++) {
+    for (var j = i; j < input.length; j++) {
+      var substring = input.substring(i, j+1);
+      for (var l = 0; l < matchstrings.length; l++) {
+        if (substring.match(matchstrings[l])) {
+          return true;
+        }
+      }
     }
   }
   return false;
