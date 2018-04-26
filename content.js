@@ -14,15 +14,19 @@ function getInputs() {
     var inputs = document.querySelectorAll('input, textarea');
     return inputs;
 }
+
+function ridWhitespace(string) {
+  return string.replace(/ /g, "");
+}
+
 /* Function that runs at the start of DOM loading and whenever a mutation on DOM occurs.
   Checks all input fields on DOM and performs pattern matching to detect whenever sensitive
   information is being entered.
   Takes in a NodeList INPUTS as parameter. */
 function evalInputs(inputs) {
-  console.log(inputs);
   for (var i = 0; i < inputs.length; i++) {
     inputs.item(i).onkeyup = function() {
-      var input = this.value;
+      var input = ridWhitespace(this.value);
       var lastinput = localStorage.getItem("lastinput");
       if (lastinput != input) {
         localStorage.setItem("lastinput", input);
