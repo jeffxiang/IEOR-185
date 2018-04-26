@@ -53,6 +53,8 @@ function updatePoints(currpoints, webpages, domains) {
 
 /* Function that checks an input with patterns. */
 function checkInput(input) {
+  // We realize a double for-loop is not ideal. Perhaps if we had time we would implement a
+  // "trie" (a tree-like data structure for string matching), which has better runtime performance.
   for (var i = 0; i < input.length; i++) {
     for (var j = i; j < input.length; j++) {
       var substring = input.substring(i, j+1);
