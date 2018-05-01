@@ -4,8 +4,9 @@ var address = /^\d+(\s)*[A-z]+(\s)*[A-z]+/;
 var cardnum = /(\d(\s)*){14, 16}/;
 var phonenum = /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})/;
 var ssn = /^\d{3}-\d{2}-\d{4}$/;
+var email = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
-var matchstrings = [address, cardnum, phonenum, ssn]; // Can be expanded.
+var matchstrings = [address, cardnum, phonenum, ssn, email]; // Can be expanded.
 
 localStorage.setItem("lastinput", ""); // Enhances UX by making sure same inputs on separate keyup events aren't double-detected.
 
